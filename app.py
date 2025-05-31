@@ -15,10 +15,10 @@ You will play against pre-programmed strategies inspired by classic tactical and
 
 plans = {
     "Level 1: Scholar's Mate": [
-        "e2e4", "e7e5", "Qd1h5", "Nb8c6", "Bf1c4", "Ng8f6", "Qh5xf7"
+        "e2e4", "e7e5", "d1h5", "b8c6", "f1c4", "g8f6", "h5f7"
     ],
     "Level 2: Fool's Mate Defense": [
-        "e2e3", "f7f6", "d1h5", "g7g6", "h5xg6"
+        "f2f3", "e7e5", "g2g4", "d8h4"
     ],
 }
 
@@ -28,8 +28,11 @@ board = chess.Board()
 moves = plans[level]
 
 for move in moves:
-    if board.is_legal(chess.Move.from_uci(move)):
-        board.push(chess.Move.from_uci(move))
+    try:
+        board.push_uci(move)
+    except:
+        st.error(f"Invalid move in plan: {move}")
+        break
 
 board_svg = chess.svg.board(board, size=500)
 components.html(board_svg, height=500)
