@@ -9,8 +9,8 @@ st.set_page_config(page_title="Chess Training Plan", layout="wide")
 st.title("♟️ Chess Training Game - Famous Plans")
 
 st.markdown("""
-This is a chess training game where each level represents a famous chess plan.
-You will play against pre-programmed strategies inspired by classic tactical and strategic ideas.
+Each level in this chess trainer demonstrates a classic tactical plan. 
+Study how the strategy unfolds move-by-move.
 """)
 
 plans = {
@@ -21,7 +21,7 @@ plans = {
         "f2f3", "e7e5", "g2g4", "d8h4"
     ],
     "Level 3: Legal's Mate": [
-        "e2e4", "e7e5", "g1f3", "b8c6", "f1c4", "d7d6", "f3e5", "c6e5", "d1h5", "e5f6", "h5f7"
+        "e2e4", "e7e5", "g1f3", "d7d6", "f1c4", "c8g4", "f3e5", "g4d1", "e5f7", "d1e2", "e1e2"
     ]
 }
 
@@ -40,4 +40,4 @@ for move in moves:
 board_svg = chess.svg.board(board, size=500)
 components.html(board_svg, height=500)
 
-st.info("Try to play this plan against the board in your own session and analyze how to defend or counter it.")
+st.info("You can now replay this plan or test defending against it.")
