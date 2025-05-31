@@ -17,9 +17,12 @@ plans = {
     "Level 1: Scholar's Mate": [
         "e2e4", "e7e5", "d1h5", "b8c6", "f1c4", "g8f6", "h5f7"
     ],
-    "Level 2: Fool's Mate Defense": [
+    "Level 2: Fool's Mate": [
         "f2f3", "e7e5", "g2g4", "d8h4"
     ],
+    "Level 3: Legal's Mate": [
+        "e2e4", "e7e5", "g1f3", "b8c6", "f1c4", "d7d6", "f3e5", "c6e5", "d1h5", "e5f6", "h5f7"
+    ]
 }
 
 level = st.selectbox("Select a Training Level", list(plans.keys()))
@@ -30,8 +33,8 @@ moves = plans[level]
 for move in moves:
     try:
         board.push_uci(move)
-    except:
-        st.error(f"Invalid move in plan: {move}")
+    except Exception as e:
+        st.error(f"Invalid move in plan: {move}. Error: {e}")
         break
 
 board_svg = chess.svg.board(board, size=500)
